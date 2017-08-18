@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\williamlew\documents\projects\hotdog\hotdog\main.cpp(21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Hotdog.vcxproj -> C:\Users\WilliamLew\Documents\Projects\Hotdog\Debug\Hotdog.exe
+  Hotdog.vcxproj -> C:\Users\WilliamLew\Documents\Projects\Hotdog\Debug\Hotdog.pdb (Partial PDB)
