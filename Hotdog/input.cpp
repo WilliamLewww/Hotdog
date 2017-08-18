@@ -13,13 +13,13 @@ int mouseX, mouseY;
 
 int controllerPad;
 
-void GetController() {
+void getController() {
 	if (SDL_NumJoysticks() > 0) {
 		SDL_JoystickOpen(0);
 	}
 }
 
-void GetKeys(SDL_Event event) {
+void getKeys(SDL_Event event) {
 	if (event.type == SDL_KEYDOWN) {
 		if (std::find(keyList.begin(), keyList.end(), event.key.keysym.sym) == keyList.end()) {
 			pressKeyList.push_back(event.key.keysym.sym);
@@ -58,12 +58,12 @@ void GetKeys(SDL_Event event) {
 	}
 }
 
-void RemoveInitialPress() {
+void removeInitialPress() {
 	pressKeyList.clear();
 	controllerPressList.clear();
 }
 
-void GetButtons(SDL_Event event) {
+void getButtons(SDL_Event event) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		if (event.button.button == SDL_BUTTON_LEFT) {
 			leftButtonDown = true;
@@ -101,7 +101,7 @@ void GetButtons(SDL_Event event) {
 	}
 }
 
-bool CheckMouseOnEntity(Vector2 position, int width, int height) {
+bool checkMouseOnEntity(Vector2 position, int width, int height) {
 	if (mouseX >= position.x && mouseX <= position.x + width && mouseY >= position.y && mouseY <= position.y + height) {
 		return true;
 	}

@@ -4,20 +4,20 @@
 #include <algorithm>
 #include "vector2.h"
 
-void GetKeys(SDL_Event event);
-void RemoveInitialPress();
+void getKeys(SDL_Event event);
+void removeInitialPress();
 extern std::vector<SDL_Keycode> keyList;
 extern std::vector<SDL_Keycode> pressKeyList;
 
-void GetButtons(SDL_Event event);
+void getButtons(SDL_Event event);
 extern bool leftButtonDown, leftButtonPress;
 extern bool middleMouseDown, middleMousePress;
 extern bool scrollUp, scrollDown;
 extern int mouseX, mouseY;
 
-void GetController();
+void getController();
 extern int controllerPad;
 extern std::vector<int> controllerList;
 extern std::vector<int> controllerPressList;
 
-bool CheckMouseOnEntity(Vector2 position, int width, int height);
+bool checkMouseOnEntity(Vector2 position, int width, int height);

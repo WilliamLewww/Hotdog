@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="board.cpp" />
     <ClCompile Include="geometry.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="joiner.cpp" />
@@ -125,6 +126,7 @@
     <ClCompile Include="vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="board.h" />
     <ClInclude Include="geometry.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="joiner.h" />

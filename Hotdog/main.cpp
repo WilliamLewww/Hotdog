@@ -1,7 +1,7 @@
 #include "main.h"
 
-void Update(int elapsedTime);
-void Render(SDL_Window* window, SDL_GLContext context);
+void update(int elapsedTime);
+void render(SDL_Window* window, SDL_GLContext context);
 
 Joiner joiner;
 
@@ -16,13 +16,13 @@ int main(int argc, char *argv[]) {
 	glOrtho(-SCREENWIDTH / 2, SCREENWIDTH / 2, SCREENHEIGHT / 2, -SCREENHEIGHT / 2, 0, 1);
 
 	SDL_Init(SDL_INIT_GAMECONTROLLER);
-	GetController();
+	getController();
 
 	srand(time(NULL));
-	joiner.Initialize();
+	joiner.initialize();
 
 	while (isRunning) {
-		RemoveInitialPress();
+		removeInitialPress();
 		leftButtonPress = false;
 		middleMousePress = false;
 
@@ -30,8 +30,8 @@ int main(int argc, char *argv[]) {
 			if (event.type == SDL_QUIT)
 				isRunning = false;
 
-			GetKeys(event);
-			GetButtons(event);
+			getKeys(event);
+			getButtons(event);
 		}
 
 		if (deltaTime < 1 / 60) {
@@ -41,8 +41,8 @@ int main(int argc, char *argv[]) {
 			deltaTime = frameEnd - frameStart;
 		}
 		frameStart = SDL_GetTicks();
-		Update(deltaTime);
-		Render(displayWindow, context);
+		update(deltaTime);
+		render(displayWindow, context);
 		frameEnd = SDL_GetTicks();
 		deltaTime = frameEnd - frameStart;
 	}
@@ -50,17 +50,17 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-void Update(int elapsedTime) {
-	joiner.Update(elapsedTime);
+void update(int elapsedTime) {
+	joiner.update(elapsedTime);
 }
 
-void Render(SDL_Window* window, SDL_GLContext context) {
+void render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_MakeCurrent(window, context);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(1,1,1,1);
 	glMatrixMode(GL_PROJECTION);
 
-	joiner.Draw();
+	joiner.draw();
 
 	SDL_GL_SwapWindow(window);
 }

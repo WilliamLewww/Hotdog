@@ -1,13 +1,13 @@
 #include "joiner.h"
 
-void Joiner::Initialize() {
+void Joiner::initialize() {
 
 }
 
-void Joiner::Draw() {
+void Joiner::draw() {
 
 }
 
-void Joiner::Update(int elapsedTime) {
+void Joiner::update(int elapsedTime) {
 
 }

@@ -2,7 +2,7 @@
 
 class Joiner {
 public:
-	void Initialize();
-	void Draw();
-	void Update(int elapsedTime);
+	void initialize();
+	void draw();
+	void update(int elapsedTime);
 };
