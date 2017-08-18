@@ -1,4 +1,5 @@
 #pragma once
+#include "board.h"
 
 class Joiner {
 public:

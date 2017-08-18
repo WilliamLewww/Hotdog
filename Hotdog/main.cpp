@@ -57,7 +57,6 @@ void update(int elapsedTime) {
 void render(SDL_Window* window, SDL_GLContext context) {
 	SDL_GL_MakeCurrent(window, context);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(1,1,1,1);
 	glMatrixMode(GL_PROJECTION);
 
 	joiner.draw();

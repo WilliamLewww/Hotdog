@@ -5,6 +5,10 @@
 
 struct Board {
 	Vector2 position;
+	float length = 40, width = 10;
+
+	float velocity = 0;
+	double rotation = 0;
 };
 extern Board board;
 

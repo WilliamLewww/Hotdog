@@ -1,13 +1,13 @@
 #include "joiner.h"
 
 void Joiner::initialize() {
-
-}
-
-void Joiner::draw() {
-
+	board.position = Vector2(50, 50);
 }
 
 void Joiner::update(int elapsedTime) {
+	updateBoard(elapsedTime);
+}
 
+void Joiner::draw() {
+	drawBoard();
 }
