@@ -3,12 +3,18 @@
 Board board;
 
 bool slideLeft = false, slideRight = false;
+double startSlideAngle = 0;
 void updateBoard(int elapsedTime) {
 	float deltaTimeS = (float)(elapsedTime) / 1000;
 
 	if (std::find(keyList.begin(), keyList.end(), SDLK_LEFT) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) == keyList.end()) {
 		if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) != keyList.end()) { board.rotation += board.slideSpeed * deltaTimeS; slideLeft = true; }
-		else { slideLeft = false; }
+		else { 
+			slideLeft = false;
+			if (slideRight == false) {
+				startSlideAngle = board.rotation;
+			}
+		}
 		if (board.velocity > board.turnSpeed) {
 			board.rotation += board.turnSpeed * deltaTimeS;
 		}
@@ -21,7 +27,12 @@ void updateBoard(int elapsedTime) {
 	}
 	if (std::find(keyList.begin(), keyList.end(), SDLK_RIGHT) != keyList.end() && std::find(keyList.begin(), keyList.end(), SDLK_LEFT) == keyList.end()) {
 		if (std::find(keyList.begin(), keyList.end(), SDLK_LALT) != keyList.end()) { board.rotation -= board.slideSpeed * deltaTimeS; slideRight = true; }
-		else { slideRight = false; }
+		else { 
+			slideRight = false; 
+			if (slideLeft == false) {
+				startSlideAngle = board.rotation;
+			}
+		}
 		if (board.velocity > board.turnSpeed) {
 			board.rotation -= board.turnSpeed * deltaTimeS;
 		}
@@ -40,27 +51,20 @@ void updateBoard(int elapsedTime) {
 		if (board.velocity < board.pushSpeed) {
 			board.velocity = board.pushSpeed;
 		}
-		else { board.velocity += 25 * deltaTimeS; }
+		else { board.velocity += 50 * deltaTimeS; }
 	}
 	else {
 		board.velocity += 10 * deltaTimeS;
 	}
 
+	std::cout << board.rotation - startSlideAngle << std::endl;
+
 	if (slideLeft == true || slideRight == true) {
-		if (slideLeft == true) {
-			Vector2 direction = Vector2((float)cos(((-board.rotation + 15) * M_PI) / 180), sin(((-board.rotation + 15) * M_PI) / 180));
-			direction.Normalize();
-			board.position += (direction * deltaTimeS) * board.velocity;
-			if (board.velocity - (board.breakSpeed / 4) * deltaTimeS <= 0) { board.velocity = 0; }
-			else { board.velocity -= (board.breakSpeed / 4) * deltaTimeS; }
-		}
-		else {
-			Vector2 direction = Vector2((float)cos(((-board.rotation - 15) * M_PI) / 180), sin(((-board.rotation - 15) * M_PI) / 180));
-			direction.Normalize();
-			board.position += (direction * deltaTimeS) * board.velocity;
-			if (board.velocity - (board.breakSpeed / 4) * deltaTimeS <= 0) { board.velocity = 0; }
-			else { board.velocity -= (board.breakSpeed / 4) * deltaTimeS; }
-		}
+		Vector2 direction = Vector2((float)cos(((-board.rotation + ((board.rotation - startSlideAngle) / 2)) * M_PI) / 180), sin(((-board.rotation + ((board.rotation - startSlideAngle) / 2)) * M_PI) / 180));
+		direction.Normalize();
+		board.position += (direction * deltaTimeS) * board.velocity;
+		if (board.velocity - (board.breakSpeed / 4) * deltaTimeS <= 0) { board.velocity = 0; }
+		else { board.velocity -= (board.breakSpeed / 4) * deltaTimeS; }
 	}
 	else {
 		Vector2 direction = Vector2((float)cos((-board.rotation * M_PI) / 180), sin((-board.rotation * M_PI) / 180));
