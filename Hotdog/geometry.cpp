@@ -4,6 +4,13 @@ double convertColor(int rgbValue) {
 	return (double)rgbValue / 255;
 }
 
+void drawPoint(Vector2 position, int color[3]) {
+	glBegin(GL_POINTS);
+	glColor4f(convertColor(color[0]), convertColor(color[1]), convertColor(color[2]), 1);
+	glVertex2d(position.x - (SCREENWIDTH / 2), position.y - (SCREENHEIGHT / 2));
+	glEnd();
+}
+
 void drawRect(Vector2 position, int width, int height) {
 	Vector2 vectors[4]{
 		Vector2(0, 0),

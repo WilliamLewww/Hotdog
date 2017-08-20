@@ -4,6 +4,7 @@
 #include "main.h"
 
 double convertColor(int rgbValue);
+void drawPoint(Vector2 position, int color[3]);
 void drawRect(Vector2 position, int width, int height);
 void drawRect(Vector2 position, int width, int height, double angle);
 void drawRect(Vector2 position, int width, int height, int color[3]);
