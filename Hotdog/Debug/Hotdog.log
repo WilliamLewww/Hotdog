@@ -1,5 +1,5 @@
 ﻿  board.cpp
-c:\users\williamlew\documents\projects\hotdog\hotdog\board.cpp(35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\williamlew\documents\projects\hotdog\hotdog\board.cpp(59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\williamlew\documents\projects\hotdog\hotdog\board.cpp(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\williamlew\documents\projects\hotdog\hotdog\board.cpp(54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Hotdog.vcxproj -> C:\Users\WilliamLew\Documents\Projects\Hotdog\Debug\Hotdog.exe
   Hotdog.vcxproj -> C:\Users\WilliamLew\Documents\Projects\Hotdog\Debug\Hotdog.pdb (Partial PDB)
