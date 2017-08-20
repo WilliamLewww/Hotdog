@@ -2,6 +2,7 @@
 
 Board board;
 std::vector<Vector2> thaneLines;
+std::vector<double> thaneAngle;
 
 bool slideLeft = false, slideRight = false;
 double startSlideAngle = 0, slideDistance = 1;
@@ -41,6 +42,7 @@ void updateBoard(int elapsedTime) {
 		if (board.velocity - (board.breakSpeed / 4) * deltaTimeS <= 0) { board.velocity = 0; }
 		else { board.velocity -= (board.breakSpeed / 3) * deltaTimeS; }
 
+		thaneAngle.push_back(board.rotation);
 		thaneLines.push_back(board.position);
 	}
 	else {
@@ -53,8 +55,9 @@ void updateBoard(int elapsedTime) {
 void drawBoard() {
 	drawRect(board.position, board.length, board.width, board.rotation);
 
-	for (Vector2 line : thaneLines) {
+	//GPU heavy due to transformations and rotations
+	for (int x = 0; x < thaneLines.size(); x++) {
 		int thaneColor[3] = { 255, 0, 0 };
-		drawPoint(line, thaneColor);
+		drawEdgesOfRect(thaneLines[x], board.length, board.width, thaneAngle[x], thaneColor);
 	}
 }
