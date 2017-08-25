@@ -36,6 +36,10 @@ void updateBoard(int elapsedTime) {
 		Vector2 direction = Vector2((float)cos(((-board.rotation + ((board.rotation - startSlideAngle) / slideDistance)) * M_PI) / 180), 
 										   sin(((-board.rotation + ((board.rotation - startSlideAngle) / slideDistance)) * M_PI) / 180));
 		direction.Normalize();
+		if (slideDistance > 3.5) {
+			if (startSlideAngle > board.rotation) { board.rotation += 0.2; startSlideAngle -= 0.2; }
+			if (startSlideAngle < board.rotation) { board.rotation -= 0.2; startSlideAngle += 0.2; }
+		}
 		board.position += (direction * deltaTimeS) * board.velocity;
 		slideDistance += board.velocity * deltaTimeS / 100;
 		std::cout << slideDistance << std::endl;
